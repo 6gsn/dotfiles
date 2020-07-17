@@ -24,6 +24,14 @@ then
     cd -
 fi
 
+if [ ! -d ~/.src/powerlevel10k ];
+then
+    mkdir -p ~/.src
+    cd ~/.src/
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k
+    cd -
+fi
+
 if [ ! -d ~/.src/fonts ];
 then
     mkdir -p ~/.src
@@ -36,7 +44,7 @@ if [ ! -d ~/.src/nerd-fonts ];
 then
     mkdir -p ~/.src
     cd ~/.src/
-    git clone https://github.com/ryanoasis/nerd-fonts
+    git clone --depth=1 https://github.com/ryanoasis/nerd-fonts
     cd -
 fi
 
@@ -49,7 +57,7 @@ cd ~/.src/fonts
 ./install.sh
 cd -
 
-# Patched powerline fonts
+# Patched nerd fonts
 cd ~/.src/nerd-fonts
 ./install.sh
 cd -
