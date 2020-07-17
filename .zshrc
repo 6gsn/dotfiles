@@ -1,21 +1,24 @@
-# PATH
-export HOME=/Users/JP25632
-export PATH=$HOME/local/bin:$HOME/bin:/usr/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-export C_INCLUDE_PATH=$HOME/local/include:$C_INCLUDE_PATH
+# PATH
+export HOME=/home1/irteam/workspace/bgsn
+export PATH=$HOME/local/bin:$HOME/bin:/usr/local/bin:$HOME/.local/bin:/bin
+
+export C_INCLUDE_PATH=$HOME/local/include:/include
 export CPLUS_INCLUDE_PATH=$C_INCLUDE_PATH
 
-export LD_LIBRARY_PATH=$HOME/local/lib:$NVOICE_SHARE/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/local/lib:/lib64:/lib
 
 # Shell
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload colors
 colors
@@ -34,9 +37,17 @@ bindkey -e
 bindkey "\e\e[D" backward-word
 bindkey "\e\e[C" forward-word
 
+## For tmux
+export TMUX_TMPDIR=$HOME/.tmux.d/tmp
+
 ## Anasconda
-export PATH="$PATH:/anaconda3/bin:/anaconda/bin"
-test -e /anaconda3/etc/profile.d/conda.sh && . /anaconda3/etc/profile.d/conda.sh
+test -e ~/anaconda3/etc/profile.d/conda.sh && . ~/anaconda3/etc/profile.d/conda.sh
+export PATH="$PATH:$HOME/anaconda3/bin"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/anaconda3/lib
+
+# For Theme
+## powerlevel
+source $HOME/.src/powerlevel10k/powerlevel10k.zsh-theme
 
 ## :
 if [ -f $HOME/.local/bin/powerline-daemon ]; then
@@ -44,15 +55,18 @@ if [ -f $HOME/.local/bin/powerline-daemon ]; then
     . $HOME/.src/powerline/powerline/bindings/zsh/powerline.zsh
 fi
 
-# For Theme
-## powerlevel
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(user ssh anaconda)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-source $HOME/.src/powerlevel10k/powerlevel10k.zsh-theme
+
+# For ssh-agent
+SSH_AGENT_FILE=$HOME/.ssh-agent
+test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE
+if ! ssh-add -l > /dev/null 2>&1; then
+    ssh-agent > $SSH_AGENT_FILE
+    source $SSH_AGENT_FILE
+    ssh-add $HOME/.ssh/id_rsa
+fi
 
 # For highlight
+# source $HOME/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.zsh.d/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # For Peco
@@ -68,7 +82,13 @@ fi
 # # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
 
+alias ls="ls --color=auto"
 alias vi="vim"
+
+# For Cuda
+export CUDA_HOME=/usr/local/cuda-9.0
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
