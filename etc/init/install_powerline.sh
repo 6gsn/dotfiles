@@ -32,11 +32,24 @@ then
     cd -
 fi
 
+if [ ! -d ~/.src/nerd-fonts ];
+then
+    mkdir -p ~/.src
+    cd ~/.src/
+    git clone https://github.com/ryanoasis/nerd-fonts
+    cd -
+fi
+
 cd ~/.src/powerline
 git checkout 2.5.2
 cd -
 
 # Patched powerline fonts
 cd ~/.src/fonts
+./install.sh
+cd -
+
+# Patched powerline fonts
+cd ~/.src/nerd-fonts
 ./install.sh
 cd -

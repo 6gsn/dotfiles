@@ -1,4 +1,4 @@
-DOTFILES_GITHUB   := "http://github.com/r9y9/dotfiles.git"
+DOTFILES_GITHUB   := "http://github.com/6gsn/dotfiles.git"
 DOTFILES_EXCLUDES := .DS_Store .git .gitmodules
 DOTFILES_TARGET   := $(wildcard .??*)
 DOTFILES_DIR      := $(PWD)

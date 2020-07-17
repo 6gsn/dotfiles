@@ -1,1 +1,0 @@
-;; non-window mode
