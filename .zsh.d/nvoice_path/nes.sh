@@ -1,0 +1,5 @@
+NES_HOME=$HOME/src/nes
+export NVOICE_SHARE=$NES_HOME/nvoice
+
+export LD_LIBRARY_PATH=$NES_HOME/nvoice/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/src/nes/libs:$LD_LIBRARY_PATH
