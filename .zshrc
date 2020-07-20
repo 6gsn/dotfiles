@@ -21,7 +21,7 @@ autoload colors
 colors
 
 autoload -Uz compinit
-compinit
+compinit -u
 
 # Completion
 zstyle ':completion:*' menu select interactive
@@ -33,6 +33,10 @@ setopt menu_complete
 bindkey -e
 bindkey "\e\e[D" backward-word
 bindkey "\e\e[C" forward-word
+
+# For in tmux
+bindkey ";3D" backward-word
+bindkey ";3C" forward-word
 
 ## Anasconda
 export PATH="$PATH:/anaconda3/bin:/anaconda/bin"
