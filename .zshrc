@@ -54,7 +54,7 @@ source $HOME/.zsh.d/plugins/fast-syntax-highlighting/fast-syntax-highlighting.pl
 [ -f $HOME/.zsh.d/peco.zshrc ] && source $HOME/.zsh.d/peco.zshrc
 
 # For autosuggestion
-autosuggestions=$HOME/.zsh.d/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+autosuggestions=$HOME/.zsh.d/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 if [ -e $autosuggestions ]; then
     source $autosuggestions
 fi
