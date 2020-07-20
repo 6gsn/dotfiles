@@ -45,12 +45,7 @@ if [ -f $HOME/.local/bin/powerline-daemon ]; then
 fi
 
 # For Theme
-## powerlevel
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs newline status)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(user ssh anaconda)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-source $HOME/.src/powerlevel10k/powerlevel10k.zsh-theme
+
 
 # For highlight
 source $HOME/.zsh.d/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -71,4 +66,6 @@ bindkey '^T' autosuggest-toggle
 alias vi="vim"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+## powerlevel
+source $HOME/.src/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.zsh.d/.p10k.zsh ]] || source ~/.zsh.d/.p10k.zsh
