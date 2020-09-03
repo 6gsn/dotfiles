@@ -45,10 +45,6 @@ test -e ~/anaconda3/etc/profile.d/conda.sh && . ~/anaconda3/etc/profile.d/conda.
 export PATH="$PATH:$HOME/anaconda3/bin"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/anaconda3/lib
 
-# For Theme
-## powerlevel
-source $HOME/.src/powerlevel10k/powerlevel10k.zsh-theme
-
 ## :
 if [ -f $HOME/.local/bin/powerline-daemon ]; then
     $HOME/.local/bin/powerline-daemon -q
@@ -73,7 +69,7 @@ source $HOME/.zsh.d/plugins/fast-syntax-highlighting/fast-syntax-highlighting.pl
 [ -f $HOME/.zsh.d/peco.zshrc ] && source $HOME/.zsh.d/peco.zshrc
 
 # For autosuggestion
-autosuggestions=$HOME/.zsh.d/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+autosuggestions=$HOME/.zsh.d/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 if [ -e $autosuggestions ]; then
     source $autosuggestions
 fi
@@ -82,7 +78,6 @@ fi
 # # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
 
-alias ls="ls --color=auto"
 alias vi="vim"
 
 # For Cuda
@@ -90,5 +85,8 @@ export CUDA_HOME=/usr/local/cuda-9.0
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
+# For Theme
+## powerlevel
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source $HOME/.src/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.zsh.d/.p10k.zsh ]] || source ~/.zsh.d/.p10k.zsh
