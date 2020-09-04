@@ -96,6 +96,10 @@ bindkey -e
 bindkey "\e\e[D" backward-word
 bindkey "\e\e[C" forward-word
 
+# For in tmux
+bindkey ";3D" backward-word
+bindkey ";3C" forward-word
+
 ## For tmux
 export TMUX_TMPDIR=$HOME/.tmux.d/tmp
 
