@@ -137,6 +137,7 @@ fi
 # # zsh-autosuggestions is designed to be unobtrusive)
 bindkey '^T' autosuggest-toggle
 
+alias ls="ls --color"
 alias vi="vim"
 
 # For Cuda

@@ -14,8 +14,6 @@ function check_requirement() {
     fi
 }
 
-[ ! -f ~/.local/bin/powerline ] && pip install --user powerline-status
-
 if [ ! -d ~/.src/powerline ];
 then
     mkdir -p ~/.src
@@ -49,7 +47,8 @@ then
 fi
 
 cd ~/.src/powerline
-git checkout 2.5.2
+git checkout 2.8
+pip install .
 cd -
 
 # Patched powerline fonts
